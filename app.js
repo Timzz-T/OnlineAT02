@@ -234,5 +234,22 @@ function formatTime(timeString) {
 
 renderPastSessions();
   
- 
+let deferredPrompt;
+const installButton = document.getElementById("intallButton");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.hidden = false;
+});
+
+installButton.addEventListener("click", () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      installButton.hidden = true;
+    });
+  }
+});
 
