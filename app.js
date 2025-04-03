@@ -235,7 +235,7 @@ function formatTime(timeString) {
 renderPastSessions();
   
 let deferredPrompt;
-const installButton = document.getElementById("intallButton");
+const installButton = document.getElementById("installButton");
 
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
